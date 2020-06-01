@@ -12,19 +12,21 @@ public class GameboardSetup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject placeholder = Utils.FindChild(this.gameObject, "NonSizingChild");
 
         //OptionsTray
         Vector3 position = Vector3.zero;
-        OptionsTray tray = Instantiate<OptionsTray>(optionsPrefab, position, optionsPrefab.transform.rotation, this.transform);
-        tray.Init(3);
-        tray.gameboard = this;
+        OptionsTray optionsTray = Instantiate<OptionsTray>(optionsPrefab, position, optionsPrefab.transform.rotation, placeholder.transform);
+        optionsTray.Init(3);
+        optionsTray.gameboard = this;
         
 
-        position.z += 3;
+        position.z += 0.5f;
 
-        DropTray dropTray = Instantiate<DropTray>(dropTrayPrefab, position, optionsPrefab.transform.rotation, this.transform);
+        DropTray dropTray = Instantiate<DropTray>(dropTrayPrefab, position, optionsPrefab.transform.rotation, placeholder.transform);
         dropTray.gameboard = this;
-        tray.dropTray = dropTray;
+        optionsTray.dropTray = dropTray;
+        dropTray.Init(2);
         //drop.tra
         HidePrefabs();
     }
