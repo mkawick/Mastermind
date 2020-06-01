@@ -5,6 +5,8 @@ using UnityEngine;
 public class Dish : MonoBehaviour
 {
     internal DropTray tray;
+    internal Token droppedToken;
+    internal int expectedTokenIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +21,27 @@ public class Dish : MonoBehaviour
 
     void OnMouseOver()
     {
-        tray.MouseHovering(this);
+        if(droppedToken == null)// cannot drop on twice
+            tray.MouseHovering(this);
     }
 
     void OnMouseExit()
     {
         tray.MouseStopHovering(this);
+    }
+
+    internal void DropToken(Token token)
+    {
+        if (droppedToken == null)
+        {
+            droppedToken = token;
+            Vector3 position = this.transform.position;
+            position.y += 0.02f;
+            iTween.MoveTo(token.gameObject, position, 0.2f);
+        }
+    }
+    public bool IsTokenCorrect()
+    {
+        return droppedToken.choiceIndex == expectedTokenIndex;
     }
 }

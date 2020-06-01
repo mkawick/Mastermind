@@ -5,7 +5,8 @@ using UnityEngine;
 public class Token : MonoBehaviour
 {
     public bool isClickingEnabled = true;
-    //bool isMouseButtonDown = false;
+    //[SerializeField]
+    internal OptionsTray optionsTray;
     public Vector3 originalPosition;
     public int choiceIndex
     {
@@ -46,9 +47,16 @@ public class Token : MonoBehaviour
         if (isClickingEnabled == false)
             return;
 
-        /* if (gameAnimator != null)
-             gameAnimator.ChoiceMade(gameObject);*/
+        if (optionsTray != null)
+        {
+            if(optionsTray.SuccessfulDrop(this))
+            {
+                return;
+            }
+        }
+
         iTween.MoveTo(this.gameObject, originalPosition, 0.5f);
+
 
         //isMouseButtonDown = false;
     }

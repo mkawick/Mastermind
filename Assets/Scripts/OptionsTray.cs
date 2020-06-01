@@ -53,21 +53,31 @@ public class OptionsTray : MonoBehaviour
             var go = Instantiate<Token>(chosenToken, position, chosenToken.transform.rotation);
             go.transform.parent = placeholder.transform;
             go.gameObject.SetActive(true);
+            go.optionsTray = this;
             tokensChosen.Add(go);
         }
         return tokensChosen;
     }
 
-    
+    internal bool SuccessfulDrop(Token token)
+    {
+        if(tray.CanDropToken(token) == true)
+        {
+            return true;
+        }
+        return false;
+    }
 
     void FindAllOptions()
     {
         GameObject tokenOptions = FindChild("TokensOptions");
 
         tokenList = new List<Token>();
+        int i = 0; 
         foreach (Transform child in tokenOptions.transform)
         {
             Token t = child.GetComponent<Token>();
+            t.choiceIndex = i++;
             tokenList.Add(t);
         }
     }

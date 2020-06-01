@@ -62,4 +62,14 @@ public class DropTray : MonoBehaviour
         mouseHoveringDish = null;
         Debug.Log("Mouse is gone.");
     }
+
+    public bool CanDropToken(Token token)
+    {
+        if (mouseHoveringDish != null)
+        {
+            mouseHoveringDish.DropToken(token);
+            return true;
+        }
+        return false;
+    }
 }
