@@ -14,8 +14,16 @@ public class OptionsTray : MonoBehaviour
         FindAllOptions();
         HideOptions();
         //List<Vector3> test1 = GetPositionDistribution(3);
-        List<Vector3> positions = GetPositionDistribution(4);
-        List<Token> tokens = SelectOptions(positions);
+        GameObject placeholder = FindChild("SelectedOptions");
+
+        bool isActive = tokenList[0].gameObject.active;
+        tokenList[0].gameObject.SetActive(true);
+        Vector3 tokenSize = tokenList[0].GetComponent<SphereCollider>().bounds.size;
+        tokenList[0].gameObject.SetActive(isActive);
+
+        List<Vector3> positions = Utils.GetPositionDistribution(4, this.transform.position, placeholder.transform.position.y, this.GetComponent<MeshRenderer>().bounds.size.x, tokenSize.x);
+
+        List<Token> tokens = SelectOptions(placeholder, positions);
         /*List<Vector3> test3 = GetPositionDistribution(5);
         List<Vector3> test4 = GetPositionDistribution(6);*/
     }
@@ -27,9 +35,8 @@ public class OptionsTray : MonoBehaviour
         
     }  
 
-    List<Token> SelectOptions(List<Vector3> positions)
+    List<Token> SelectOptions(GameObject placeholder, List<Vector3> positions)
     {
-        GameObject placeholder = FindChild("SelectedOptions");
         List<Token> tokensChosen = new List<Token>();
         int num = positions.Count;
         HashSet<int> previousChoices = new HashSet<int>();
@@ -46,57 +53,7 @@ public class OptionsTray : MonoBehaviour
         return tokensChosen;
     }
 
-    List <Vector3>GetPositionDistribution(int numPositions, bool fullWidthAcross = false)
-    {
-        GameObject placeholder = FindChild("SelectedOptions");
-        Vector3 scale = this.GetComponent<MeshRenderer>().bounds.size;
-        Vector3 center = this.transform.position;
-        center.y = placeholder.transform.position.y;
-        //center.y += 0.2f; // raise them above the parent
-
-        bool isActive = tokenList[0].gameObject.active;
-        tokenList[0].gameObject.SetActive(true);
-        Vector3 tokenSize = tokenList[0].GetComponent<SphereCollider>().bounds.size;
-        tokenList[0].gameObject.SetActive(isActive);
-        float margin = tokenSize.x * 1.8f; //150% of the normal width
-
-        
-        Vector3 startingPosition = center;
-        float offsetXPerToken;
-        if (fullWidthAcross)
-        {
-            float workingWidth = scale.x - margin;
-            offsetXPerToken = workingWidth / (float)(numPositions - 1);
-            startingPosition.x -= workingWidth / 2;
-        }
-        else
-        {
-            offsetXPerToken = margin;
-            int num = numPositions;
-            if (num % 1 == 0)// is even
-            {
-                // we need to stradle the midpoint. In the case of 4,
-                // we need to subtract the margin and 1/2 margin: (num-1)/2
-                float halfPlusNum = (float) (numPositions-1) / 2.0f;
-                startingPosition.x -= offsetXPerToken * halfPlusNum;
-            }
-            else
-            {
-                startingPosition.x -= offsetXPerToken * (numPositions / 2);
-            }
-        }
-
-        List<Vector3> positions = new List<Vector3>();
-        for (int i=0; i<numPositions; i++)
-        {
-            positions.Add(startingPosition);
-            startingPosition.x += offsetXPerToken;
-        }
-
-        //NewChunkWasGenerated(chunk.transform, scale.x / 2, scale.z / 2);
-
-        return positions;
-    }
+    
 
     void FindAllOptions()
     {
