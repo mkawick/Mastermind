@@ -32,12 +32,14 @@ public class OptionsTray : MonoBehaviour
         GameObject placeholder = FindChild("SelectedOptions");
         List<Token> tokensChosen = new List<Token>();
         int num = positions.Count;
+        HashSet<int> previousChoices = new HashSet<int>();
         for(int i=0; i<num; i++)
         {
             int choice = UnityEngine.Random.Range(0, NumOptions);
             Token chosenToken = tokenList[choice];
-            var go = Instantiate<Token>(chosenToken, positions[i], chosenToken.transform.rotation);
-            //go.transform.parent = placeholder.transform;
+            Vector3 position = positions[i];
+            var go = Instantiate<Token>(chosenToken, position, chosenToken.transform.rotation);
+            go.transform.parent = placeholder.transform;
             go.gameObject.SetActive(true);
             tokensChosen.Add(go);
         }
@@ -52,8 +54,11 @@ public class OptionsTray : MonoBehaviour
         center.y = placeholder.transform.position.y;
         //center.y += 0.2f; // raise them above the parent
 
+        bool isActive = tokenList[0].gameObject.active;
+        tokenList[0].gameObject.SetActive(true);
         Vector3 tokenSize = tokenList[0].GetComponent<SphereCollider>().bounds.size;
-        float margin = tokenSize.x / 2 * 3; //150% of the normal width
+        tokenList[0].gameObject.SetActive(isActive);
+        float margin = tokenSize.x * 1.8f; //150% of the normal width
 
         
         Vector3 startingPosition = center;
