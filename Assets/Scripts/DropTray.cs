@@ -10,9 +10,22 @@ public class DropTray : MonoBehaviour
 
     [SerializeField]
     Dish dish;
+    public bool isInTest = false;
     public int NumOptions { get { return dishesList.Count; } }
     // Start is called before the first frame update
     void Start()
+    {
+        if (isInTest)
+            Init(3);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    internal void Init(int numTrays = 2)
     {
         GameObject placeholder = Utils.FindChild(this.gameObject, "SelectedOptions");
 
@@ -23,13 +36,6 @@ public class DropTray : MonoBehaviour
         List<Vector3> positions = Utils.GetPositionDistribution(3, this.transform.position, placeholder.transform.position.y, this.GetComponent<MeshRenderer>().bounds.size.x, tokenSize.x);
 
         dishesList = SelectOptions(placeholder, positions);
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     List<Dish> SelectOptions(GameObject placeholder, List<Vector3> positions)

@@ -1280,7 +1280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &698357832
 Transform:
   m_ObjectHideFlags: 0
@@ -1402,13 +1402,14 @@ GameObject:
   - component: {fileID: 705381060}
   - component: {fileID: 705381059}
   - component: {fileID: 705381058}
+  - component: {fileID: 705381062}
   m_Layer: 0
   m_Name: GameField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &705381058
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1485,6 +1486,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &705381062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705381057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c76ddcd3f2dcde4da43f3c26ecf5ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionsPrefab: {fileID: 903380877}
+  dropTrayPrefab: {fileID: 1079014465}
 --- !u!1001 &764381161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1608,7 +1623,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameboard: {fileID: 0}
-  tray: {fileID: 1079014465}
+  dropTray: {fileID: 1079014465}
+  isInTest: 0
 --- !u!65 &903380878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1821,7 +1837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &999425868
 Transform:
   m_ObjectHideFlags: 0
@@ -2045,6 +2061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameboard: {fileID: 0}
   dish: {fileID: 1441099173}
+  isInTest: 0
 --- !u!1001 &1114268329
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2056,6 +2073,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 872371236444420189, guid: 4751f1e7d5833f7428e3174e80374789,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4197373392256453198, guid: 4751f1e7d5833f7428e3174e80374789,
         type: 3}

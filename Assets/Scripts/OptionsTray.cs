@@ -11,26 +11,12 @@ public class OptionsTray : MonoBehaviour
     public int NumOptions { get { return tokenList.Count; } }
 
     [SerializeField]
-    DropTray tray;
+    public DropTray dropTray;
+    public bool isInTest = false;
     void Start()
     {
-        FindAllOptions();
-        HideOptions();
-        
-        GameObject placeholder = FindChild("SelectedOptions");
-
-        bool isActive = tokenList[0].gameObject.active;
-        tokenList[0].gameObject.SetActive(true);
-        Vector3 tokenSize = tokenList[0].GetComponent<SphereCollider>().bounds.size;
-        tokenList[0].gameObject.SetActive(isActive);
-
-        List<Vector3> positions = Utils.GetPositionDistribution(4, this.transform.position, placeholder.transform.position.y, this.GetComponent<MeshRenderer>().bounds.size.x, tokenSize.x);
-
-        List<Token> tokens = SelectOptions(placeholder, positions);
-
-        //List<Vector3> test1 = GetPositionDistribution(3);
-        /*List<Vector3> test3 = GetPositionDistribution(5);
-        List<Vector3> test4 = GetPositionDistribution(6);*/
+        if(isInTest)
+            Init(5);
     }
 
 
@@ -38,7 +24,28 @@ public class OptionsTray : MonoBehaviour
     void Update()
     {
         
-    }  
+    }
+
+    public void Init(int numOptions = 3)
+    {
+        FindAllOptions();
+        HideOptions();
+
+        GameObject placeholder = FindChild("SelectedOptions");
+
+        bool isActive = tokenList[0].gameObject.active;
+        tokenList[0].gameObject.SetActive(true);
+        Vector3 tokenSize = tokenList[0].GetComponent<SphereCollider>().bounds.size;
+        tokenList[0].gameObject.SetActive(isActive);
+
+        List<Vector3> positions = Utils.GetPositionDistribution(numOptions, this.transform.position, placeholder.transform.position.y, this.GetComponent<MeshRenderer>().bounds.size.x, tokenSize.x);
+
+        List<Token> tokens = SelectOptions(placeholder, positions);
+
+        //List<Vector3> test1 = GetPositionDistribution(3);
+        /*List<Vector3> test3 = GetPositionDistribution(5);
+        List<Vector3> test4 = GetPositionDistribution(6);*/
+    }
 
     List<Token> SelectOptions(GameObject placeholder, List<Vector3> positions)
     {
@@ -61,7 +68,7 @@ public class OptionsTray : MonoBehaviour
 
     internal bool SuccessfulDrop(Token token)
     {
-        if(tray.CanDropToken(token) == true)
+        if(dropTray.CanDropToken(token) == true)
         {
             return true;
         }
