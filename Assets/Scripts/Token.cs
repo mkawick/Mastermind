@@ -34,7 +34,8 @@ public class Token : MonoBehaviour
 
         screenPoint = Camera.main.WorldToScreenPoint(transform.position);
         offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
-    
+
+        this.GetComponent<SphereCollider>().enabled = false;
     }
     private void OnMouseDrag()
     {
@@ -44,6 +45,7 @@ public class Token : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        this.GetComponent<SphereCollider>().enabled = true;
         if (isClickingEnabled == false)
             return;
 

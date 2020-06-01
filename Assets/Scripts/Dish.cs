@@ -30,7 +30,7 @@ public class Dish : MonoBehaviour
         tray.MouseStopHovering(this);
     }
 
-    internal void DropToken(Token token)
+    internal Token DropToken(Token token)
     {
         if (droppedToken == null)
         {
@@ -39,6 +39,19 @@ public class Dish : MonoBehaviour
             position.y += 0.02f;
             iTween.MoveTo(token.gameObject, position, 0.2f);
         }
+      /*  else
+        {
+            Token oldToken = droppedToken;
+            droppedToken = token;
+            Vector3 position = this.transform.position;
+            position.y += 0.02f;
+            iTween.MoveTo(token.gameObject, position, 0.2f);
+            iTween.MoveTo(oldToken.gameObject, oldToken.originalPosition, 0.5f);
+
+            return oldToken;
+        }*/
+
+        return null;
     }
     public bool IsTokenCorrect()
     {
