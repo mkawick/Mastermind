@@ -5,7 +5,8 @@ using UnityEngine;
 public class Token : MonoBehaviour
 {
     public bool isClickingEnabled = true;
-    bool isMouseButtonDown = false;
+    //bool isMouseButtonDown = false;
+    public Vector3 originalPosition;
     public int choiceIndex
     {
         get;
@@ -15,7 +16,7 @@ public class Token : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        originalPosition = transform.position;
     }
 
     // ------------------------------------------------------------
@@ -45,10 +46,11 @@ public class Token : MonoBehaviour
         if (isClickingEnabled == false)
             return;
 
-       /* if (gameAnimator != null)
-            gameAnimator.ChoiceMade(gameObject);*/
+        /* if (gameAnimator != null)
+             gameAnimator.ChoiceMade(gameObject);*/
+        iTween.MoveTo(this.gameObject, originalPosition, 0.5f);
 
-        isMouseButtonDown = false;
+        //isMouseButtonDown = false;
     }
 
     void UpdateWorldPOsitionBasedOnMouse()

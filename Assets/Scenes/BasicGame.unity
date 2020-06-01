@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &14232420
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -567,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &279395923
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -844,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &566137316
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -966,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &579042928
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1119,6 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &660903624
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1246,6 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &664547430
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1602,6 +1608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameboard: {fileID: 0}
+  tray: {fileID: 1079014465}
 --- !u!65 &903380878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2152,6 +2159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1114268333
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2274,6 +2282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1120897068
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2434,6 +2443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1251274230
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2561,6 +2571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1308119933
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2606,7 +2617,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441099172}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.98
@@ -2751,6 +2762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1653868464
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2878,6 +2890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1773458581
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3005,6 +3018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1899611952
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3216,6 +3230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &2016893691
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3343,6 +3358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &2018121342
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3459,6 +3475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isClickingEnabled: 1
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!135 &1239895913165850893
 SphereCollider:
   m_ObjectHideFlags: 0

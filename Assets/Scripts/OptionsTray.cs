@@ -9,11 +9,14 @@ public class OptionsTray : MonoBehaviour
     public GameboardSetup gameboard;
     List<Token> tokenList;
     public int NumOptions { get { return tokenList.Count; } }
+
+    [SerializeField]
+    DropTray tray;
     void Start()
     {
         FindAllOptions();
         HideOptions();
-        //List<Vector3> test1 = GetPositionDistribution(3);
+        
         GameObject placeholder = FindChild("SelectedOptions");
 
         bool isActive = tokenList[0].gameObject.active;
@@ -24,6 +27,8 @@ public class OptionsTray : MonoBehaviour
         List<Vector3> positions = Utils.GetPositionDistribution(4, this.transform.position, placeholder.transform.position.y, this.GetComponent<MeshRenderer>().bounds.size.x, tokenSize.x);
 
         List<Token> tokens = SelectOptions(placeholder, positions);
+
+        //List<Vector3> test1 = GetPositionDistribution(3);
         /*List<Vector3> test3 = GetPositionDistribution(5);
         List<Vector3> test4 = GetPositionDistribution(6);*/
     }

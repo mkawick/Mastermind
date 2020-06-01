@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dish : MonoBehaviour
 {
+    internal DropTray tray;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +15,15 @@ public class Dish : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnMouseOver()
+    {
+        tray.MouseHovering(this);
+    }
+
+    void OnMouseExit()
+    {
+        tray.MouseStopHovering(this);
     }
 }

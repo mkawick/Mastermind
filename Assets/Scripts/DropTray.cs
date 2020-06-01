@@ -6,6 +6,7 @@ public class DropTray : MonoBehaviour
 {
     public GameboardSetup gameboard;
     List<Dish> dishesList;
+    Dish mouseHoveringDish;
 
     [SerializeField]
     Dish dish;
@@ -42,8 +43,23 @@ public class DropTray : MonoBehaviour
             var go = Instantiate<Dish>(dish, position, dish.transform.rotation);
             go.transform.parent = placeholder.transform;
             go.gameObject.SetActive(true);
+            go.tray = this;
             tokensChosen.Add(go);
         }
         return tokensChosen;
+    }
+
+    public void MouseHovering(Dish dish)
+    {
+        if (mouseHoveringDish != null)
+            return;
+
+        mouseHoveringDish = dish;
+        Debug.Log("Mouse is over GameObject.");
+    }
+    public void MouseStopHovering(Dish dish)
+    {
+        mouseHoveringDish = null;
+        Debug.Log("Mouse is gone.");
     }
 }
