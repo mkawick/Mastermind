@@ -21,7 +21,7 @@ public class GameboardSetup : MonoBehaviour
         optionsTrayInstance = Instantiate<OptionsTray>(optionsPrefab, position, optionsPrefab.transform.rotation, placeholder.transform);
         optionsTrayInstance.Init(3);
         optionsTrayInstance.gameboard = this;
-        
+
 
         position.z += 0.5f;
 
@@ -33,17 +33,33 @@ public class GameboardSetup : MonoBehaviour
         HidePrefabs();
 
         currentRoundChoices = MakeColorChoices();
+        dropTrayInstance.FillInChoices(currentRoundChoices);
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
-        if(dropTrayInstance.AreAllDishesFilled() == true)
+        if(dropTrayInstance.AreAllDishesFilled() == true)// todo, convert to event driven
         {
             // match choices to selected
             //currentRoundChoices;
-            // remove the tokens and dishes that matched
-            // send non-matching tokens back to original location
+            List<Dish> listOfCorrectDishes = dropTrayInstance.SortMatches();
+            foreach(var dish in listOfCorrectDishes)
+            {
+                Token token = dish.droppedToken;
+                optionsTrayInstance.RemoveToken(token);
+                currentRoundChoices.Remove(token.choiceIndex);
+                dish.gameObject.SetActive(false);
+            }
+            // walk list of dishes, grab the token and then remove it from the options tray
+            // also, remove it from the current round choices
+
+            dropTrayInstance.SendActiveTrayTokensHome();
+            // now we send the non-matching back to their original locations
+
+
         }
     }
 
@@ -67,4 +83,6 @@ public class GameboardSetup : MonoBehaviour
         }
         return myChoices;
     }
+
+
 }

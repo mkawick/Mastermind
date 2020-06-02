@@ -70,6 +70,18 @@ public class OptionsTray : MonoBehaviour
         return tokensChosen;
     }
 
+    public void RemoveToken(Token token)
+    {
+        foreach (var listToken in selectedTokenList)
+        {
+            if(listToken == token)
+            {
+                selectedTokenList.Remove(token);
+                return;
+            }
+        }
+    }
+
     public List <int> GetSelectedTokenIndices()
     { 
         List<int> items = new List<int>();

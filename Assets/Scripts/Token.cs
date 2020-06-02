@@ -57,10 +57,12 @@ public class Token : MonoBehaviour
             }
         }
 
+        ReturnToOriginalPosition();
+    }
+
+    public void ReturnToOriginalPosition()
+    {
         iTween.MoveTo(this.gameObject, originalPosition, 0.5f);
-
-
-        //isMouseButtonDown = false;
     }
 
     void UpdateWorldPOsitionBasedOnMouse()
