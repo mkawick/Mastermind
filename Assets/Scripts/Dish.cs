@@ -57,4 +57,15 @@ public class Dish : MonoBehaviour
     {
         return droppedToken.choiceIndex == expectedTokenIndex;
     }
+
+    public bool HasToken()
+    {
+        return droppedToken != null;
+    }
+    public int GetTokenIndex()
+    {
+        if (droppedToken != null)
+            return droppedToken.choiceIndex;
+        return -1;
+    }
 }

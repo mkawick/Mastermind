@@ -55,6 +55,16 @@ public class DropTray : MonoBehaviour
         return tokensChosen;
     }
 
+    public bool AreAllDishesFilled()
+    {
+        foreach(var dish in dishesList)
+        {
+            if (dish.HasToken() == false)
+                return false;
+        }
+        return true;
+    }
+
     public void MouseHovering(Dish dish)
     {
         if (mouseHoveringDish != null)
