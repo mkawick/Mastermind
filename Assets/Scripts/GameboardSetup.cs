@@ -5,6 +5,7 @@ using UnityEngine.Assertions;
 
 public class GameboardSetup : MonoBehaviour
 {
+    public GameRoundSetupData[] levels;
     [SerializeField]
     OptionsTray optionsPrefab;
 
