@@ -25,6 +25,13 @@ public class DropTray : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        foreach (var dish in dishesList)
+        {
+            Destroy(dish);
+        }
+    }
 
     internal void Init(int numTrays = 2)
     {
@@ -84,6 +91,15 @@ public class DropTray : MonoBehaviour
         return -1;
     }
 
+    public bool AreAnyTraysStillActive()
+    {
+        foreach (var dish in dishesList)
+        {
+            if (dish.gameObject.active == true)
+                return true;
+        }
+        return false;
+    }
     public void SendActiveTrayTokensHome()
     {
         foreach (var dish in dishesList)

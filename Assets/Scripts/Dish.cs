@@ -19,6 +19,12 @@ public class Dish : MonoBehaviour
         
     }
 
+    private void OnDestroy()
+    {
+        if (droppedToken != null)
+            Destroy(droppedToken);
+    }
+
     void OnMouseOver()
     {
         if(droppedToken == null)// cannot drop on twice

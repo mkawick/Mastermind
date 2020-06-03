@@ -28,6 +28,13 @@ public class OptionsTray : MonoBehaviour
     {
         
     }
+    private void OnDestroy()
+    {
+        foreach (var token in selectedTokenList)
+        {
+            Destroy(token);
+        }
+    }
 
     public void Init(int numOptions = 3)
     {
