@@ -31,7 +31,7 @@ public class GameboardSetup : MonoBehaviour
     {
         gameState = GameState.CreateNewRound;
     }
-    int[,] progression = new int[,] 
+  /*  int[,] progression = new int[,] 
         { 
             { 3, 2 },
             { 3, 3 },
@@ -40,7 +40,7 @@ public class GameboardSetup : MonoBehaviour
             { 5, 4 },
             { 5, 3 },
             { 5, 2 }
-        };
+        };*/
     int progressionIndex = 0;
 
     void InitializeGame(int numOptions, int numDropTrays)
@@ -85,7 +85,8 @@ public class GameboardSetup : MonoBehaviour
         switch (gameState)
         {
             case GameState.CreateNewRound:
-                InitializeGame(progression[progressionIndex,0], progression[progressionIndex, 1]);
+                GameRoundSetupData level = levels[progressionIndex];
+                InitializeGame(level.supply, level.numTargets);
                 break;
             case GameState.NormalGameplay:
                 if (dropTrayInstance.AreAllDishesFilled() == true)// todo, convert to event driven
