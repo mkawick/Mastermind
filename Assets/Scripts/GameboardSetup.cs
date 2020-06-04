@@ -123,6 +123,8 @@ public class GameboardSetup : MonoBehaviour
                     gameState = GameState.CreateNewRound;
                     timeGameStateChange = 0;
                     progressionIndex++;
+                    if (progressionIndex >= levels.Length)
+                        progressionIndex = levels.Length -1;
                 }
                 break;
         }
